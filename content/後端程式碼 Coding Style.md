@@ -26,7 +26,7 @@ public void GetNewCaseNo(string caseNo)
 ❌
 
 ```cs
-// 占用情形管理: 新增資料
+// 使用者管理: 新增資料
 public async Task<(bool Success, string Message)> Create(CreateModel model)
 {
 	// ...
@@ -37,7 +37,7 @@ public async Task<(bool Success, string Message)> Create(CreateModel model)
 
 ```cs
 /// <summary>
-/// 占用情形管理: 新增資料
+/// 使用者管理: 新增資料
 /// </summary>
 /// <param name="createModel"></param>
 /// <returns></returns>
@@ -85,16 +85,16 @@ await mailService.SendMail(email, "會員密碼重新設定", tempReplace);
 
 ```cs
 /// <summary>
-/// ChangeRole mail寄送 (TRC_06 角色切換)
+/// 改變角色信件寄送
 /// </summary>
 /// <param name="to">收件人mail address</param>
 /// <param name="subject"></param>
 /// <returns></returns>
-public async Task SendChangeRoleMail(string suAccount, string role1, string role2)
+public async Task SendChangeRoleMail(string account, string role1, string role2)
 {
-    var before = role.Read(x => x.srUID == role1)?.srName ?? "";
-    var after = role.Read(x => x.srUID == role2)?.srName ?? "";
-    await SendMail(suAccount, "帳號權限異動", new List<string> { before, after }, showLineQRCode: false);
+    var before = role.Read(x => x.uid == role1)?.Name ?? "";
+    var after = role.Read(x => x.uid == role2)?.Name ?? "";
+    await SendMail(account, "帳號權限異動", new List<string> { before, after }, showLineQRCode: false);
 }
 ```
 
@@ -304,24 +304,24 @@ if (celebrationThisYear != celebrationNextYear && celebration.type != "New Year"
 方法帶入的參數如果太多，可以拆成好幾行，且每行要對齊第一個參數。
 
 ```cs
-public class CaseService
+public class ExampleService
 {
 	private readonly IJsonMapService jsonMapService;
 	private readonly IGetLastUpdateService getLastUpdate;
 	private readonly IGetUserService getUserService;
 	private readonly IMailService mail;
 	private readonly IRepository<Case> usecase;
-	private readonly IRepository<CaseTAP> tap;
+	private readonly IRepository<CaseTT> tap;
 	private readonly IRepository<CaseDetail> detail;
 	private readonly IRepository<CaseHistory> history;
 	
-    public CaseService (
+    public ExampleService (
 	    IJsonMapService _jsonMapService,
 		IGetLastUpdateService _getLastUpdate,
 		IGetUserService _getUserService,
 		IMailService _mail,
 		IRepository<Case> _case,
-		IRepository<CaseTAP> _tap,
+		IRepository<CaseTT> _tap,
 		IRepository<CaseDetail> _detail,
 		IRepository<CaseHistory> _history)
     {
@@ -330,7 +330,7 @@ public class CaseService
 		getLastUpdate = _getLastUpdate;           // 轉換西元民國
 		mail = _mail;                             // 寄信
 		usecase = _case;                          // Case表的儲存體
-		tap = _tap;                               // CaseTAP表的儲存體
+		tap = _tap;                               // CaseTT表的儲存體
 		detail = _detail;                         // CaseDetail表的儲存體
 		history = _history;                       // CaseHistory表的儲存體
     }
