@@ -137,4 +137,3 @@ cd ~/Steam/steamapps/common/PalServer/Pal/Saved/SaveGames/0/24611FCADE664A3CB3C2
 	- 如何透過 generating tool 寫 script:  [Generate Session URL/Code/Transfer Code Dialog](https://winscp.net/eng/docs/ui_generateurl) 
 2. if script works, then use 工作排程器(Task Scheduler) in Windows 7~11.
 	- [Schedule file transfers (or synchronization) to FTP/SFTP server :: WinSCP](https://winscp.net/eng/docs/guide_schedule) 
-3. 
