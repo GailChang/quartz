@@ -279,10 +279,10 @@ fields Vs. properties
 > 4. Protected
 > 5. Private
 
-開頭大括號前面不要有 line break. (No line break before opening brace.)
-即使大括號是不必要的，還是要盡量使用。(Braces used even when optional.)
-if /for /while 與逗號等符號後加上 space (Space after if/for/while etc., and after commas.)
-開頭小括號後方與結尾小括號前方不要加 space。 (No space after an opening parenthesis or before a closing parenthesis.)
+- 即使大括號是不必要的，還是要盡量使用。(Braces used even when optional.)
+- if /for /while 與逗號等符號後加上 space (Space after if/for/while etc., and after commas.)
+
+
 unary operator(一元運算符，例: +, -運算符號) 與 operand (運算數: 是指數學運算的對象)之間要加 space。
 
 ```cs
